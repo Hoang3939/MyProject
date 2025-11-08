@@ -1,1 +1,1 @@
-console.log('Nội dung này từ MAIN');
+console.log('Nội dung CHÍNH THỨC từ feature-4');
