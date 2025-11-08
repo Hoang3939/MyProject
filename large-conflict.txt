@@ -1,0 +1,10 @@
+Phần 1: Giới thiệu chung
+Đây là nội dung gốc của phần giới thiệu.
+Dự án này nhằm mục đích...
+
+Phần 2: Yêu cầu kỹ thuật
+- Yêu cầu 1: Cần có Python 3.8
+- Yêu cầu 2: Cần có cơ sở dữ liệu.
+
+Phần 3: Kết luận
+Nội dung kết luận gốc.
