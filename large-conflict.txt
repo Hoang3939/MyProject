@@ -2,9 +2,9 @@ Phần 1: Giới thiệu (ĐÃ SỬA BỞI A)
 Đây là nội dung MỚI của phần giới thiệu từ A.
 Dự án này nhằm mục đích quản lý...
 
-Phần 2: Yêu cầu kỹ thuật (ĐÃ SỬA BỞI A)
-- Yêu cầu 1: Cần có Python 3.10
-- Yêu cầu 2: Cần có PostgresQL.
+Phần 2: Yêu cầu kỹ thuật (ĐÃ SỬA BỞI B)
+- Yêu cầu 1: Cần có Python 3.8
+- Yêu cầu 2: Cần có MySQL.
 
-Phần 3: Kết luận
-Nội dung kết luận gốc.
+Phần 3: Kết luận (ĐÃ SỬA BỞI B)
+Nội dung kết luận MỚI từ B.
