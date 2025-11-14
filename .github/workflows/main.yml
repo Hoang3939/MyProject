@@ -47,4 +47,4 @@ jobs:
             cd /home/nguyenhuyhoang0943/MyProject
             git pull origin main
             npm install
-            /usr/local/bin/pm2 restart MyProject || /usr/local/bin/pm2 start /home/nguyenhuyhoang0943/MyProject/index.js --name MyProject
+            /usr/local/bin/pm2 restart MyProject || /usr/local/bin/pm2 start index.js --name MyProject --cwd /home/nguyenhuyhoang0943/MyProject
