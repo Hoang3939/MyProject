@@ -42,8 +42,9 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
+          # Sua doan nay thanh duong dan chinh xac
           script: |
             cd /home/nguyenhuyhoang0943/MyProject
             git pull origin main
             npm install
-            /usr/local/bin/pm2 restart MyProject || /usr/local/bin/pm2 start index.js --name MyProject
+            /usr/local/bin/pm2 restart MyProject || /usr/local/bin/pm2 start /home/nguyenhuyhoang0943/MyProject/index.js --name MyProject
