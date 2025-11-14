@@ -8,7 +8,7 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"No tests available yet\"",
+    "test": "jest",
     "build": "echo \"No build step required\""
   },
   "repository": {
@@ -16,11 +16,14 @@
     "url": "git+https://github.com/Hoang3939/MyProject.git"
   },
   "keywords": [],
-  "author": "", 
+  "author": "",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
     "url": "https://github.com/Hoang3939/MyProject/issues"
   },
-  "homepage": "https://github.com/Hoang3939/MyProject#readme"
+  "homepage": "https://github.com/Hoang3939/MyProject#readme",
+  "devDependencies": {
+    "jest": "^30.2.0"
+  }
 }
