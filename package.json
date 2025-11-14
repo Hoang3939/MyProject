@@ -8,8 +8,9 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "jest",
-    "build": "echo \"No build step required\""
+    "test": "jest --coverage",
+    "build": "echo \"No build step required\"",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",

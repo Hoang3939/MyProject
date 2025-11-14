@@ -36,6 +36,14 @@ jobs:
 
       - name: Build application
         run: npm run build
+
+      # Cap nhat pipeline de lay bao cao cua Jest
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report-${{ matrix.node-version }}
+          path: coverage/
+
   # Them buoc deploy
   deploy:
     needs: build-and-test                
@@ -55,3 +63,56 @@ jobs:
             git pull origin main
             npm install
             /usr/local/bin/pm2 restart MyProject || /usr/local/bin/pm2 start index.js --name MyProject --cwd /home/nguyenhuyhoang0943/MyProject
+
+
+  notify-on-failure:
+    runs-on: ubuntu-latest
+    # Chi chay khi pipeline that bai
+    if: failure()
+    needs: [build-and-test, deploy]
+    
+    steps:
+      - name: Send email notification on failure
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.MAIL_SERVER_ADDRESS }}
+          server_port: ${{ secrets.MAIL_SERVER_PORT }}
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: 'Build Lỗi: ${{ github.repository }}'
+          body: |
+            Pipeline của dự án ${{ github.repository }} đã thất bại.
+            
+            Commit: ${{ github.sha }}
+            Người thực hiện: ${{ github.actor }}
+            
+            Xem log chi tiết tại:
+            ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          to: ${{ secrets.MAIL_TO }}
+          from: ${{ secrets.MAIL_FROM }}
+
+  notify-on-success:
+    runs-on: ubuntu-latest
+    # Chi chay khi pipeline thanh cong
+    if: success()
+    needs: [build-and-test, deploy]
+    
+    steps:
+      - name: Send email notification on success
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.MAIL_SERVER_ADDRESS }}
+          server_port: ${{ secrets.MAIL_SERVER_PORT }}
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: 'Build Thành Công: ${{ github.repository }}'
+          body: |
+            Pipeline của dự án ${{ github.repository }} đã chạy thành công!
+            
+            Commit: ${{ github.sha }}
+            Người thực hiện: ${{ github.actor }}
+            
+            Xem log chi tiết tại:
+            ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          to: ${{ secrets.MAIL_TO }}
+          from: ${{ secrets.MAIL_FROM }}
