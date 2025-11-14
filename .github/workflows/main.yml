@@ -29,3 +29,21 @@ jobs:
 
       - name: Build application
         run: npm run build
+  # Them buoc deploy
+  deploy:
+    needs: build-and-test                
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'  
+    steps:
+      - name: Deploy to Google Cloud VM
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            cd /home/nguyenhuyhoang0943/MyProject
+            git pull origin main
+            npm install
+            pm2 restart MyProject || pm2 start index.js --name MyProject
